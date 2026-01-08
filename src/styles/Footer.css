@@ -1,0 +1,46 @@
+.Footer {
+    background-color: #F1EED3;
+    padding: 20px 20px;
+    text-align: center;
+}
+
+.Footer_Top,
+.Footer_Middle,
+.Footer_Bottom {
+    display: flex;
+    justify-content: center;
+}
+
+.Footer_Top {
+    margin-bottom: 24px;
+}
+
+.Footer_Middle{
+    margin-bottom: 24px;
+    gap: 24px;
+}
+
+.Footer_Contact{
+    background-color: #ffffff;
+    color: #AE9300;
+    padding: 8px 12px;
+
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.Footer_Middle a {
+    color: #AE9300;
+    font-size: 20px;
+}
+
+.Footer_Middle a:hover{
+    opacity: 0.75;
+}
+
+.Footer_Bottom p{
+    margin: 0;
+    font-size: 12px;
+    color: #AE9300;
+}
