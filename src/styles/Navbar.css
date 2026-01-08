@@ -1,0 +1,45 @@
+.Navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0px 40px;
+    background-color: #ffffff;
+
+    font-family: 'Brandon Grotesque', 'Montserrat', sans-serif;
+}
+
+.Navbar_logo img{
+    height: 150px;
+    width: auto;
+}
+
+.Navbar_middle {
+    display: flex;
+    gap: 2rem;
+}
+
+.Navbar_middle a {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #AE9300;
+}
+
+.Navbar_middle a:hover{
+    opacity: 0.7;
+}
+
+.Navbar_right {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.Navbar_right a {
+    color: #AE9300;
+    font-size: 25px;
+}
+
+.Navbar_right a:hover {
+    opacity: 0.7;
+}
