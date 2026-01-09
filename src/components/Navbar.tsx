@@ -1,6 +1,6 @@
 import '../styles/Navbar.css';
 import logo from '../assets/Logo.jpg';
-import { FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import { FaInstagram, FaLinkedinIn, FaFacebook } from 'react-icons/fa';
 
 
 function Navbar() {
@@ -25,6 +25,14 @@ function Navbar() {
             aria-label='Instagram'
           >
             <FaInstagram/>
+          </a>
+          <a
+            href="https://www.facebook.com/Thekahicompany/"
+            target='_blank'
+            rel="noopener noreferrer"
+            aria-label='Facebook'
+          >
+            <FaFacebook/>
           </a>
           <a
             href="https://www.linkedin.com/in/the-kahi-company-687303112/"
