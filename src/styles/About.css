@@ -1,0 +1,40 @@
+.About{
+    padding-bottom: 10px;
+}
+
+.About_Image{
+    position: relative;
+}
+
+.About_Image img{
+    width: 100%;
+    display: block;
+}
+
+.About_Image h1{
+    position: absolute;
+    bottom: 50px;
+    left: 24px;
+    color: #ffffff;
+    font-family: "Libre Baskerville", serif;
+    font-size: 50px;
+    font-weight: 400;
+}
+
+.About_Blurb{
+    background-color: #ffffff;
+    color: #ae9300;
+    text-align: center;
+    padding: 20px 40px;
+}
+
+.About_Blurb h2{
+    font-family: "Libre Baskerville", serif;
+    margin-bottom: 24px;
+    font-weight: 300;
+    font-size: 24px;
+}
+
+.About_Blurb p{
+
+}

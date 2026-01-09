@@ -1,13 +1,17 @@
 import '../styles/Navbar.css';
 import logo from '../assets/Logo.jpg';
 import { FaInstagram, FaLinkedinIn, FaFacebook } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+
 
 
 function Navbar() {
   return (
     <header className='Navbar'>
         <div className='Navbar_logo'>
-          <img src={logo} alt="The Kahi Company Logo"/>
+          <Link to="/">         
+            <img src={logo} alt="The Kahi Company Logo"/>
+          </Link>
         </div>
 
         <nav className='Navbar_middle'>

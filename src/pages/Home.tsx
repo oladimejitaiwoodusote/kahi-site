@@ -12,7 +12,7 @@ function Home() {
             <img src={Home_1} alt="Home_1"/>
         </div>
         <div className='Home_Blurb'>
-            <h2>We are the Kahi Company.</h2>
+            <h2>We are The Kahi Company.</h2>
             <p>
             The Kahi Company is a creative event planning and design studio specializing in beautifully curated weddings and social celebrations. 
             Known for transforming meaningful moments into unforgettable experiences, we blend artistic vision with thoughtful coordination to create events that feel personal
