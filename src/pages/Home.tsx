@@ -34,6 +34,7 @@ function Home() {
                     From custom details to subtle gestures that make guests feel included, 
                     we focus on the elements that help tell your story."
                 image={Home_3}
+                reverse
             />
         </div>
     </div>

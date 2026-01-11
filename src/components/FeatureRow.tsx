@@ -5,11 +5,12 @@ type FeatureRowProps = {
     title: string;
     text: string;
     image: string;
+    reverse?: boolean;
 };
 
-function FeatureRow({title, text, image}: FeatureRowProps) {
+function FeatureRow({title, text, image, reverse = false}: FeatureRowProps) {
   return (
-    <div className='FeatureRow'>
+    <div className={`FeatureRow ${reverse ? 'FeatureRow--reverse' : ''}`}>
         <div className='FeatureRow_Text'>
             <h2>{title}</h2>
             <p>{text}</p>

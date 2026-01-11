@@ -5,6 +5,10 @@
     padding-bottom: 100px;
 }
 
+.FeatureRow--reverse {
+    flex-direction: row-reverse;
+}
+
 .FeatureRow_Text{
     background-color: #F1EED3;
     color: #AE9300;

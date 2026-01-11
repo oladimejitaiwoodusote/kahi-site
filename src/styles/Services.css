@@ -1,0 +1,27 @@
+.Services_Image{
+    position: relative;
+    height: 125vh;
+    overflow: hidden;
+    width: 100%;
+}
+
+.Services_Image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.Services_Image h1{
+    position: absolute;
+    bottom: 50px;
+    left: 24px;
+    color: #ffffff;
+    font-family: "Libre Baskerville", serif;
+    font-size: 50px;
+    font-weight: 400;
+}
+
+.Services_Cards {
+    padding: 50px 100px;
+} 
