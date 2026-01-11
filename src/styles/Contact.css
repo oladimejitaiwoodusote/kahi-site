@@ -1,0 +1,36 @@
+.Contact {
+    padding-bottom: 10px;
+}
+
+.Contact_Image {
+    position: relative;
+}
+
+.Contact_Image img {
+    width: 100%;
+    display: block;
+}
+
+.Contact_Image h1{
+    position: absolute;
+    bottom: 50px;
+    left: 24px;
+    color: #ffffff;
+    font-family: "Libre Baskerville", serif;
+    font-size: 50px;
+    font-weight: 400;
+}
+
+.Contact_Blurb{
+    background-color: #ffffff;
+    color: #ae9300;
+    text-align: left;
+    padding: 20px 40px;
+}
+
+.Contact_Blurb h2{
+    font-family: "Libre Baskerville", serif;
+    margin-bottom: 24px;
+    font-weight: 300;
+    font-size: 24px;
+}
