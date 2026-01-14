@@ -1,4 +1,14 @@
 .Navbar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+
+    z-index: 10;
+    will-change: transform;
+
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -10,7 +20,7 @@
 }
 
 .Navbar_logo img{
-    height: 150px;
+    height: 110px;
     width: auto;
 }
 

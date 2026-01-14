@@ -3,8 +3,6 @@ import logo from '../assets/Logo.jpg';
 import { FaInstagram, FaLinkedinIn, FaFacebook } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-
-
 function Navbar() {
   return (
     <header className='Navbar'>
