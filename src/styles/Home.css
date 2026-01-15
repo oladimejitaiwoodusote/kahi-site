@@ -3,6 +3,7 @@
     height: 130vh;
     overflow: hidden;
     margin-top: 0px;
+    z-index: 1;
 }
 
 .Home_Image img{
@@ -40,4 +41,7 @@
 
 .Home_Cards {
     padding: 50px 100px;
+
+    position: relative;
+    z-index: 3;
 }

@@ -1,7 +1,12 @@
 import '../styles/About.css';
 import About_1 from '../assets/About Us 1.jpg';
+import useParallaxHeader from '../hooks/useParralaxHeader';
 
 function About() {
+  // useParallaxHeader({
+  //   heroSelector: ".About_Image",
+  // })
+
   return (
     <div className="About">
         <div className="About_Image">
