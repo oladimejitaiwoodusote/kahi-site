@@ -1,9 +1,12 @@
 .Contact {
-    padding-bottom: 10px;
+    padding-bottom: 50px;
 }
 
 .Contact_Image {
     position: relative;
+    height: 120vh;
+    overflow: hidden;
+    
 }
 
 .Contact_Image img {
@@ -26,6 +29,10 @@
     color: #ae9300;
     text-align: left;
     padding: 30px 40px;
+
+    position: relative;
+    margin-top: 0px;
+    z-index: 2;
 }
 
 .Contact_Blurb h2{
@@ -41,6 +48,10 @@
     gap: 32px;
     padding: 0px 40px;
     max-width: 700px;
+
+    position: relative;
+    margin-top: 0px;
+    z-index: 3;
 }
 
 .ContactForm_Section{

@@ -26,6 +26,10 @@
     color: #ae9300;
     text-align: center;
     padding: 20px 40px;
+
+    position: relative;
+    margin-top: 0px;
+    z-index: 2;
 }
 
 .About_Blurb h2{

@@ -9,9 +9,14 @@ import Services_6 from '../assets/Services 6.jpg';
 import Services_7 from '../assets/Services 7.jpg';
 import Services_8 from '../assets/Services 8.jpg';
 import Services_9 from '../assets/Services 9.jpg';
+import useParallaxHeader from '../hooks/useParralaxHeader';
 
 
 function Services() {
+    useParallaxHeader({
+        heroSelector: ".Services_Image",
+    })
+
   return (
     <div className='Services'>
         <div className='Services_Image'>

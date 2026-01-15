@@ -1,7 +1,11 @@
 import '../styles/Contact.css';
 import Contact_1 from '../assets/Contact Us.jpg';
+import useParallaxHeader from '../hooks/useParralaxHeader';
 
 function Contact() {
+    useParallaxHeader({
+        heroSelector: ".Contact_Image"
+    })
   return (
     <div className='Contact'>
         <div className='Contact_Image'>
