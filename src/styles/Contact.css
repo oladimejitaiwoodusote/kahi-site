@@ -120,3 +120,13 @@
 .ContactForm_Submit:hover{
     background-color: #8a7500;
 }
+
+.ContactForm_ErrorBox {
+    background: #ffecec;
+    border: 1px solid #ff5a5a;
+    color: #a30000;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+  }
+  

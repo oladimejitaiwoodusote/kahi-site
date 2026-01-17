@@ -8,48 +8,63 @@ function Contact() {
     useParallaxHeader({
         heroSelector: ".Contact_Image"
     })
-
-    const [formData, setFormData] = useState({
+    
+    const initialFormState = {
         fullname: "",
         business: "",
         email: "",
         phone: "",
-        contactMethod: [] as string[],
-        eventtype: [] as string[],
+        contactMethod: "",
+        eventtype: "",
         eventdate: "",
         eventlocation: "",
         guests: "",
         description: "",
         goals: ["", "", ""],
         mood: "",
-        services: [] as string[],
+        services: "",
         special: "",
-        gift : [] as string[],
-        consent: [] as string[],
-    })
+        gift: "",
+        consent: "",
+      };
 
+    const [formData, setFormData] = useState(initialFormState)
+
+
+    const [errors, setErrors] = useState<string[]>([])
+
+    // const validateForm = () => {
+    //     const newErrors: string[] = [];
+      
+    //     if (!formData.fullname.trim()) newErrors.push("Full name is required");
+    //     if (!formData.email.trim()) newErrors.push("Email is required");
+    //     if (!formData.phone.trim()) newErrors.push("Phone number is required");
+      
+    //     if (!formData.contactMethod) newErrors.push("Preferred contact method is required");
+      
+    //     if (!formData.eventtype) newErrors.push("Event type is required");
+    //     if (!formData.eventdate.trim()) newErrors.push("Event date is required");
+    //     if (!formData.eventlocation.trim()) newErrors.push("Event location is required");
+    //     if (!formData.guests.trim()) newErrors.push("Number of guests is required");
+      
+    //     if (!formData.description.trim()) newErrors.push("Event description is required");
+    //     if (!formData.mood.trim()) newErrors.push("Event mood is required");
+      
+    //     if (!formData.services) newErrors.push("Service selection is required");
+    //     if (!formData.gift) newErrors.push("Gift arrangement selection is required");
+    //     if (!formData.consent) newErrors.push("Consent is required");
+      
+    //     setErrors(newErrors);
+    //     return newErrors.length === 0;
+    //   };
+      
+    
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
       ) => {
-        const { name, value, type } = e.target;
-      
-        if (type === "checkbox") {
-          const input = e.target as HTMLInputElement; // 👈 type narrowing
-          const checked = input.checked;
-      
-          setFormData(prev => {
-            const current = prev[name as keyof typeof prev] as string[];
-            const updated = checked
-              ? [...current, value]
-              : current.filter(v => v !== value);
-      
-            return { ...prev, [name]: updated };
-          });
-        } else {
-          setFormData(prev => ({ ...prev, [name]: value }));
-        }
-      };
-      
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+      };            
 
     const handleGoalChange = (index: number, value: string) => {
         setFormData(prev => {
@@ -59,28 +74,66 @@ function Contact() {
         });
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
-        // Prepare templateParams for EmailJS
-        const templateParams = {
-            ...formData,
-            goals: formData.goals.join(", "),
-            contactmethod: formData.contactMethod.join(", "),
-            eventtype: formData.eventtype.join(", "),
-            services: formData.services.join(", "),
+      
+        const form = e.currentTarget;
+        const formDataObj = new FormData(form);
+      
+        const payload = {
+          fullname: formDataObj.get("fullname") as string,
+          business: formDataObj.get("business") as string,
+          email: formDataObj.get("email") as string,
+          phone: formDataObj.get("phone") as string,
+          contact_method: formDataObj.get("contactMethod") as string,
+          eventtype: formDataObj.get("eventtype") as string,
+          eventdate: formDataObj.get("eventdate") as string,
+          eventlocation: formDataObj.get("eventlocation") as string,
+          guests: formDataObj.get("guests") as string,
+          description: formDataObj.get("description") as string,
+          mood: formDataObj.get("mood") as string,
+          services: formDataObj.get("services") as string,
+          special: formDataObj.get("special") as string,
+          gift: formDataObj.get("gift") as string,
+          consent: formDataObj.get("consent") as string,
+          goals: [
+            formDataObj.get("goal0"),
+            formDataObj.get("goal1"),
+            formDataObj.get("goal2"),
+          ]
+            .filter(Boolean)
+            .join(", "),
         };
-
-        emailjs.send('service_x1d3asd', 'template_c6k2r3v', templateParams, '0452pkp-cvB9_0Waa')
-            .then((res) => {
-                console.log("Email sent successfully!", res.status, res.text);
-                alert("Form submitted! Thank you.");
-            })
-            .catch((err) => {
-                console.error("Error sending email:", err);
-                alert("Oops, something went wrong.");
-            });
-    };
+      
+        // Validate USING payload, not React state
+        const newErrors: string[] = [];
+        if (!payload.fullname) newErrors.push("Full name is required");
+        if (!payload.email) newErrors.push("Email is required");
+        if (!payload.contact_method) newErrors.push("Contact method is required");
+        if (!payload.eventtype) newErrors.push("Event type is required");
+        if (!payload.consent) newErrors.push("Consent is required");
+      
+        if (newErrors.length) {
+          setErrors(newErrors);
+          return;
+        }
+      
+        emailjs
+          .send(
+            import.meta.env.VITE_EMAILJS_SERVICE_ID,
+            import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+            payload,
+            import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+          )
+          .then(() => {
+            alert("Form submitted! Thank you.");
+            form.reset();              // 🔥 guaranteed reset
+            setErrors([]);
+            setFormData(initialFormState); // keep React in sync
+          })
+          .catch(() => alert("Oops, something went wrong."));
+      };
+      
 
     return (
         <div className='Contact'>
@@ -112,11 +165,18 @@ function Contact() {
                         <label>Phone Number (required)</label>
                         <input type='tel' name='phone' value={formData.phone} onChange={handleChange}/>
 
-                        <p>Preferred method of contact</p>
+                        <p>Preferred method of contact (required)</p>
                         <div className='ContactForm_Checkboxes'>
                             {["email", "phone", "whatsapp"].map(method => (
                                 <label key={method}>
-                                    <input type='checkbox' name='contactMethod' value={method} onChange={handleChange}/> {method.charAt(0).toUpperCase() + method.slice(1)}
+                                    <input 
+                                        type='radio' 
+                                        name='contactMethod' 
+                                        value={method} 
+                                        onChange={handleChange}
+                                        checked={formData.contactMethod === method}
+                                        /> 
+                                        {method.charAt(0).toUpperCase() + method.slice(1)}
                                 </label>
                             ))}
                         </div>
@@ -125,11 +185,18 @@ function Contact() {
                     {/* Event Overview */}
                     <div className='ContactForm_Section'>
                         <h3>Event Overview</h3>
-                        <p>Type of Event</p>
+                        <p>Type of Event (required)</p>
                         <div className='ContactForm_Checkboxes'>
                             {["wedding","birthday","anniversary","babyshower","cooperate","product","other"].map(type => (
                                 <label key={type}>
-                                    <input type='checkbox' name='eventtype' value={type} onChange={handleChange}/> {type.charAt(0).toUpperCase() + type.slice(1)}
+                                    <input 
+                                        type='radio' 
+                                        name='eventtype' 
+                                        value={type} 
+                                        onChange={handleChange}
+                                        checked={formData.eventtype === type}
+                                        /> 
+                                        {type.charAt(0).toUpperCase() + type.slice(1)}
                                 </label>
                             ))}
                         </div>
@@ -137,32 +204,39 @@ function Contact() {
                         <input type='text' name='eventdate' value={formData.eventdate} onChange={handleChange}/>
                         <label>Event Location (required)</label>
                         <input type='text' name='eventlocation' value={formData.eventlocation} onChange={handleChange}/>
-                        <label>Number of Guests (approx.)</label>
+                        <label>Approximate Number of Guests (required)</label>
                         <input type='text' name='guests' value={formData.guests} onChange={handleChange}/>
                     </div>
 
                     {/* Event Goals & Vision */}
                     <div className='ContactForm_Section'>
                         <h3>Event Goals & Vision</h3>
-                        <label>Briefly describe purpose or theme of your event:</label>
+                        <label>Briefly describe purpose or theme of your event (required)</label>
                         <input type='text' name='description' value={formData.description} onChange={handleChange}/>
 
                         <label>Top 3 goals for this event:</label>
                         {formData.goals.map((goal, idx) => (
-                            <input key={idx} type='text' value={goal} onChange={e => handleGoalChange(idx, e.target.value)}/>
+                            <input key={idx} name={`goal${idx}`} type='text' value={goal} onChange={e => handleGoalChange(idx, e.target.value)}/>
                         ))}
 
-                        <label>Describe the mood, vibe or style you want</label>
+                        <label>Describe the mood, vibe or style you want (required)</label>
                         <input type='text' name='mood' value={formData.mood} onChange={handleChange}/>
                     </div>
 
                     {/* Services Needed */}
                     <div className='ContactForm_Section'>
-                        <h3>Services Needed</h3>
+                        <h3>Services Needed (required)</h3>
                         <div className='ContactForm_Checkboxes'>
                             {["fullservice","partial","onsite"].map(service => (
                                 <label key={service}>
-                                    <input type='checkbox' name='services' value={service} onChange={handleChange}/> {service.replace(/([a-z])([A-Z])/g, '$1 $2')}
+                                    <input 
+                                        type='radio' 
+                                        name='services' 
+                                        value={service} 
+                                        onChange={handleChange}
+                                        checked={formData.services === service}
+                                        /> 
+                                        {service.replace(/([a-z])([A-Z])/g, '$1 $2')}
                                 </label>
                             ))}
                         </div>
@@ -174,11 +248,18 @@ function Contact() {
                         <label>Special requests</label>
                         <input type='text' name='special' value={formData.special} onChange={handleChange}/>
 
-                        <p>Do you require gift curation or favor arrangements?</p>
+                        <p>Do you require gift curation or favor arrangements? (required)</p>
                         <div className='ContactForm_Checkboxes'>
                             {["yes","no"].map(opt => (
                                 <label key={opt}>
-                                    <input type='checkbox' name='gift' value={opt} onChange={handleChange}/> {opt.charAt(0).toUpperCase() + opt.slice(1)}
+                                    <input 
+                                        type='radio' 
+                                        name='gift' 
+                                        value={opt} 
+                                        onChange={handleChange}
+                                        checked={formData.gift === opt}
+                                        /> 
+                                        {opt.charAt(0).toUpperCase() + opt.slice(1)}
                                 </label>
                             ))}
                         </div>
@@ -187,16 +268,33 @@ function Contact() {
                     {/* Consent */}
                     <div className='ContactForm_Section'>
                         <h3>Consent</h3>
-                        <p>I consent to the Kahi Company using this information to plan, coordinate, and design my event</p>
+                        <p>I consent to the Kahi Company using this information to plan, coordinate, and design my event (required)</p>
                         <div className='ContactForm_Checkboxes'>
                             {["yes","no"].map(opt => (
                                 <label key={opt}>
-                                    <input type='checkbox' name='consent' value={opt} onChange={handleChange}/> {opt.charAt(0).toUpperCase() + opt.slice(1)}
+                                    <input 
+                                        type='radio' 
+                                        name='consent' 
+                                        value={opt} 
+                                        onChange={handleChange}
+                                        checked={formData.consent === opt}
+                                        /> 
+                                        {opt.charAt(0).toUpperCase() + opt.slice(1)}
                                 </label>
                             ))}
                         </div>
                     </div>
 
+                    {errors.length > 0 && (
+                    <div className="ContactForm_ErrorBox">
+                        <strong>Please fix the following:</strong>
+                            <ul>
+                            {errors.map((err, i) => (
+                            <li key={i}>{err}</li>
+                        ))}
+                            </ul>
+                    </div>
+)}
                     <button type='submit' className='ContactForm_Submit'>SUBMIT</button>
                 </form>
             </div>
