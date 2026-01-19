@@ -1,55 +1,161 @@
-.Navbar{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+/* =========================
+   BASE NAVBAR (DESKTOP)
+========================= */
 
+.Navbar {
+  height: 110px;
 
-    z-index: 10;
-    will-change: transform;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 
+  z-index: 100;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    padding: 0px 40px;
-    background-color: #ffffff;
+  padding: 0 40px;
+  background-color: #ffffff;
 
-    font-family: 'Brandon Grotesque', 'Montserrat', sans-serif;
+  font-family: 'Brandon Grotesque', 'Montserrat', sans-serif;
 }
 
-.Navbar_logo img{
-    height: 110px;
-    width: auto;
+/* Logo */
+.Navbar_logo img {
+  height: 110px;
+  width: auto;
+  display: block;
 }
 
+/* Middle nav (desktop links) */
 .Navbar_middle {
-    display: flex;
-    gap: 2rem;
+  display: flex;
+  gap: 2rem;
 }
 
 .Navbar_middle a {
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #AE9300;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #AE9300;
 }
 
-.Navbar_middle a:hover{
-    opacity: 0.7;
+.Navbar_middle a:hover {
+  opacity: 0.7;
 }
 
+/* Desktop socials */
 .Navbar_right {
-    display: flex;
-    gap: 1.2rem;
+  display: flex;
+  gap: 1.2rem;
 }
 
 .Navbar_right a {
-    color: #AE9300;
-    font-size: 25px;
+  color: #AE9300;
+  font-size: 25px;
 }
 
 .Navbar_right a:hover {
-    opacity: 0.7;
+  opacity: 0.7;
+}
+
+/* Hamburger hidden on desktop */
+.Navbar_toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #AE9300;
+  cursor: pointer;
+}
+
+/* Mobile socials hidden on desktop */
+.Navbar_mobile_socials {
+  display: none;
+}
+
+/* =========================
+   MOBILE STYLES
+========================= */
+
+@media (max-width: 768px) {
+
+  /* Navbar container */
+  .Navbar {
+    height: 90px;
+    padding: 0 16px;
+
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Logo — CENTERED, NOT CLIPPED */
+  .Navbar_logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+  }
+
+  .Navbar_logo img {
+    height: 70px;
+    width: auto;
+    display: block;
+  }
+
+  /* Hamburger — LEFT */
+  .Navbar_toggle {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    z-index: 30;
+  }
+
+  /* Remove desktop socials entirely */
+  .Navbar_right {
+    display: none;
+  }
+
+  /* Mobile dropdown menu */
+  .Navbar_middle {
+    position: fixed;
+    top: 90px;
+    left: 0;
+    width: 100%;
+
+    background-color: #ffffff;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+
+    padding: 30px 0;
+
+    transform: translateY(-120%);
+    transition: transform 0.3s ease;
+
+    z-index: 10;
+  }
+
+  .Navbar_middle.open {
+    transform: translateY(0);
+  }
+
+  /* Mobile socials INSIDE menu only */
+  .Navbar_mobile_socials {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 47px;
+  }
+
+  .Navbar_mobile_socials a {
+    font-size: 22px;
+    color: #AE9300;
+  }
 }
