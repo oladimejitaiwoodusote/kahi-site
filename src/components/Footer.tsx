@@ -36,7 +36,9 @@ function Footer() {
           </a>
         </div>
         <div className='Footer_Bottom'>
-            <p>© 2019-2026 The Kahi Company<sup>TM</sup> LLC, All rights reserved</p>
+        <p>
+          © 2019-2026 The Kahi Company<span>™</span> LLC, All rights reserved
+        </p>
         </div>
     </footer>
   )

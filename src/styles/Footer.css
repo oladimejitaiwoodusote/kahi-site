@@ -1,33 +1,50 @@
+/* =========================
+   FOOTER BASE (DESKTOP)
+========================= */
+
 .Footer {
     background-color: #F1EED3;
     padding: 20px 20px;
     text-align: center;
+
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
+/* Shared layout */
 .Footer_Top,
 .Footer_Middle,
 .Footer_Bottom {
     display: flex;
     justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
+/* Top */
 .Footer_Top {
     margin-bottom: 24px;
 }
 
-.Footer_Middle{
-    margin-bottom: 24px;
-    gap: 24px;
-}
-
-.Footer_Contact{
+/* Contact button */
+.Footer_Contact {
     background-color: #ffffff;
     color: #AE9300;
-    padding: 8px 12px;
+    padding: 8px 14px;
 
     font-size: 14px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
+
+    display: inline-block;
+    text-decoration: none;
+}
+
+/* Social icons row */
+.Footer_Middle {
+    margin-bottom: 24px;
+    gap: 24px;
 }
 
 .Footer_Middle a {
@@ -35,12 +52,55 @@
     font-size: 20px;
 }
 
-.Footer_Middle a:hover{
+.Footer_Middle a:hover {
     opacity: 0.75;
 }
 
-.Footer_Bottom p{
+/* Bottom text */
+.Footer_Bottom p {
     margin: 0;
     font-size: 12px;
     color: #AE9300;
+
+    max-width: 90%;
+    line-height: 1.5;
+    text-align: center;
+
+    /* 🔑 FORCE TEXT WRAPPING */
+    white-space: normal;
+    word-break: break-word;
+}
+
+/* =========================
+   MOBILE FOOTER
+========================= */
+
+@media (max-width: 768px) {
+
+    .Footer {
+        padding: 24px 16px;
+    }
+
+    .Footer_Top {
+        margin-bottom: 20px;
+    }
+
+    .Footer_Middle {
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    .Footer_Contact {
+        font-size: 13px;
+        padding: 10px 16px;
+    }
+
+    .Footer_Middle a {
+        font-size: 22px; /* better tap target */
+    }
+
+    .Footer_Bottom p {
+        font-size: 11px;
+        line-height: 1.6;
+    }
 }

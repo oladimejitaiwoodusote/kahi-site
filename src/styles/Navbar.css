@@ -2,10 +2,15 @@
    BASE NAVBAR (DESKTOP)
 ========================= */
 
+:root {
+  --nav-height-desktop: 110px;
+  --nav-height-mobile: 90px;
+}
+
 .Navbar {
   height: 110px;
 
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -84,7 +89,7 @@
 
   /* Navbar container */
   .Navbar {
-    height: 90px;
+    height: var(--nav-height-mobile);
     padding: 0 16px;
 
     justify-content: center;

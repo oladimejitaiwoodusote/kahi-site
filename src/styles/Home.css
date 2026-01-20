@@ -1,12 +1,22 @@
-.Home_Image{
+:root {
+    --nav-height-desktop: 110px;
+    --nav-height-mobile: 90px;
+}
+
+.Home {
+    width: 100%;
+    overflow-x: hidden; /* prevent horizontal scroll */
+}
+
+/* Hero Image */
+.Home_Image {
     position: relative;
     height: 130vh;
     overflow: hidden;
-    margin-top: 0px;
     z-index: 1;
 }
 
-.Home_Image img{
+.Home_Image img {
     position: absolute;
     top: 0;
     left: 0;
@@ -16,7 +26,8 @@
     will-change: transform;
 }
 
-.Home_Blurb{
+/* Blurb Section */
+.Home_Blurb {
     position: relative;
     z-index: 2;
     margin-top: -120px;
@@ -26,22 +37,54 @@
     padding: 20px 40px;
 }
 
-.Home_Blurb h2{
+.Home_Blurb h2 {
     font-family: "Libre Baskerville", serif;
     margin-bottom: 24px;
     font-weight: 300;
     font-size: 24px;
-
 }
 
-.Home_Blurb p{
+.Home_Blurb p {
     font-family: "Brandon Grotesque", Arial, sans-serif;
     font-size: 16px;
 }
 
+/* Feature Rows container */
 .Home_Cards {
     padding: 50px 100px;
-
     position: relative;
     z-index: 3;
+}
+
+/* =========================
+   MOBILE RESPONSIVENESS
+========================= */
+
+@media (max-width: 768px) {
+
+    .Home_Cards {
+        padding: 30px 16px;
+    }
+
+    .Home_Blurb {
+        margin-top: calc(-1 * var(--nav-height-mobile));
+        padding: 20px 16px;
+    }
+
+    .Home_Blurb h2 {
+        font-size: 20px;
+    }
+
+    .Home_Blurb p {
+        font-size: 14px;
+    }
+
+    .Home_Image {
+        height: 100vh; /* full screen but scaled for mobile */
+    }
+
+    .Home_Image img {
+        top: 0;
+        height: 100%;
+    }
 }
