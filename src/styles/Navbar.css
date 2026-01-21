@@ -89,7 +89,7 @@
 
   /* Navbar container */
   .Navbar {
-    height: var(--nav-height-mobile);
+    height: 70px; /* shorter navbar */
     padding: 0 16px;
 
     justify-content: center;
@@ -106,7 +106,7 @@
   }
 
   .Navbar_logo img {
-    height: 70px;
+    height: 50px; /* slightly smaller logo for tighter navbar */
     width: auto;
     display: block;
   }
@@ -129,7 +129,7 @@
   /* Mobile dropdown menu */
   .Navbar_middle {
     position: fixed;
-    top: 90px;
+    top: 70px; /* adjust for shorter navbar */
     left: 0;
     width: 100%;
 
@@ -140,8 +140,7 @@
     align-items: center;
     gap: 1.5rem;
 
-    padding: 30px 0;
-
+    padding: 20px 0; /* slightly less padding */
     transform: translateY(-120%);
     transition: transform 0.3s ease;
 
@@ -156,7 +155,7 @@
   .Navbar_mobile_socials {
     display: flex;
     gap: 1.5rem;
-    margin-top: 47px;
+    margin-top: 30px; /* smaller margin for tighter look */
   }
 
   .Navbar_mobile_socials a {
