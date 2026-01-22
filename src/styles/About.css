@@ -11,7 +11,7 @@
 /* HERO IMAGE */
 .About_Image {
     position: relative;
-    height: 80vh; /* taller for desktop */
+    height: 130vh; /* taller for desktop */
     overflow: hidden;
 }
 
