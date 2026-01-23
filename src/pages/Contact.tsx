@@ -105,7 +105,6 @@ function Contact() {
       special: formDataObj.get("special") as string,
       gift: formDataObj.get("gift") as string,
       consent: formDataObj.get("consent") as string,
-
       goals: [
         formDataObj.get("goal0"),
         formDataObj.get("goal1"),
@@ -113,7 +112,6 @@ function Contact() {
       ]
         .filter(Boolean)
         .join(", "),
-
       // 🔥 META
       time: submissionTime,
       id: submissionId,
@@ -146,16 +144,18 @@ function Contact() {
       )
       .then(() => {
         alert(`Form submitted! Reference ID: ${submissionId}`);
-
         form.reset();
         setErrors([]);
         setFormData(initialFormState);
-
-        // regenerate ID + date for next submit
+        // regenerate ID + date for next submission
         setSubmissionMeta(generateMeta());
       })
       .catch(() => alert("Oops, something went wrong."));
   };
+
+  // ============================
+  // RENDER
+  // ============================
 
   return (
     <div className="Contact">
@@ -187,7 +187,7 @@ function Contact() {
               onChange={handleChange}
             />
 
-            <label>Business/Organization</label>
+            <label>Business / Organization</label>
             <input
               type="text"
               name="business"
@@ -195,7 +195,7 @@ function Contact() {
               onChange={handleChange}
             />
 
-            <label>Email Address</label>
+            <label>Email Address (required)</label>
             <input
               type="email"
               name="email"
@@ -203,7 +203,7 @@ function Contact() {
               onChange={handleChange}
             />
 
-            <label>Phone Number</label>
+            <label>Phone Number (required)</label>
             <input
               type="tel"
               name="phone"
@@ -211,7 +211,7 @@ function Contact() {
               onChange={handleChange}
             />
 
-            <p>Preferred method of contact</p>
+            <p>Preferred method of contact (required)</p>
             <div className="ContactForm_Checkboxes">
               {["email", "phone", "whatsapp"].map((method) => (
                 <label key={method}>
@@ -219,20 +219,73 @@ function Contact() {
                     type="radio"
                     name="contactMethod"
                     value={method}
-                    onChange={handleChange}
                     checked={formData.contactMethod === method}
+                    onChange={handleChange}
                   />
-                  {method}
+                  {method.charAt(0).toUpperCase() + method.slice(1)}
                 </label>
               ))}
             </div>
+          </div>
+
+          {/* Event Overview */}
+          <div className="ContactForm_Section">
+            <h3>Event Overview</h3>
+
+            <p>Type of Event (required)</p>
+            <div className="ContactForm_Checkboxes">
+              {[
+                "wedding",
+                "birthday",
+                "anniversary",
+                "babyshower",
+                "cooperate",
+                "product",
+                "other",
+              ].map((type) => (
+                <label key={type}>
+                  <input
+                    type="radio"
+                    name="eventtype"
+                    value={type}
+                    checked={formData.eventtype === type}
+                    onChange={handleChange}
+                  />
+                  {type.charAt(0).toUpperCase() + type.slice(1)}
+                </label>
+              ))}
+            </div>
+
+            <label>Event Date</label>
+            <input
+              type="text"
+              name="eventdate"
+              value={formData.eventdate}
+              onChange={handleChange}
+            />
+
+            <label>Event Location</label>
+            <input
+              type="text"
+              name="eventlocation"
+              value={formData.eventlocation}
+              onChange={handleChange}
+            />
+
+            <label>Number of Guests</label>
+            <input
+              type="text"
+              name="guests"
+              value={formData.guests}
+              onChange={handleChange}
+            />
           </div>
 
           {/* Event Goals & Vision */}
           <div className="ContactForm_Section">
             <h3>Event Goals & Vision</h3>
 
-            <label>Description</label>
+            <label>Event Description</label>
             <input
               type="text"
               name="description"
@@ -240,7 +293,7 @@ function Contact() {
               onChange={handleChange}
             />
 
-            <label>Top 3 goals</label>
+            <label>Top 3 Goals</label>
             {formData.goals.map((goal, idx) => (
               <input
                 key={idx}
@@ -260,6 +313,78 @@ function Contact() {
             />
           </div>
 
+          {/* Services Needed */}
+          <div className="ContactForm_Section">
+            <h3>Services Needed (required)</h3>
+            <div className="ContactForm_Checkboxes">
+              {["fullservice", "partial", "onsite"].map((service) => (
+                <label key={service}>
+                  <input
+                    type="radio"
+                    name="services"
+                    value={service}
+                    checked={formData.services === service}
+                    onChange={handleChange}
+                  />
+                  {service.replace(/([a-z])([A-Z])/g, "$1 $2")}
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {/* Guest & Experience */}
+          <div className="ContactForm_Section">
+            <h3>Guest & Experience Details</h3>
+
+            <label>Special Requests / Guest Experience</label>
+            <input
+              type="text"
+              name="special"
+              value={formData.special}
+              onChange={handleChange}
+            />
+
+            <p>Gift / Favor Arrangements (required)</p>
+            <div className="ContactForm_Checkboxes">
+              {["yes", "no"].map((opt) => (
+                <label key={opt}>
+                  <input
+                    type="radio"
+                    name="gift"
+                    value={opt}
+                    checked={formData.gift === opt}
+                    onChange={handleChange}
+                  />
+                  {opt.charAt(0).toUpperCase() + opt.slice(1)}
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {/* Consent */}
+          <div className="ContactForm_Section">
+            <h3>Consent (required)</h3>
+            <p>
+              I consent to the Kahi Company using this information to plan,
+              coordinate, and design my event.
+            </p>
+            <div className="ContactForm_Checkboxes">
+              {["yes", "no"].map((opt) => (
+                <label key={opt}>
+                  <input
+                    type="radio"
+                    name="consent"
+                    value={opt}
+                    checked={formData.consent === opt}
+                    onChange={handleChange}
+                  />
+                  {opt.charAt(0).toUpperCase() + opt.slice(1)}
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {/* Errors */}
           {errors.length > 0 && (
             <div className="ContactForm_ErrorBox">
               <strong>Please fix the following:</strong>
@@ -271,6 +396,7 @@ function Contact() {
             </div>
           )}
 
+          {/* Submit */}
           <button type="submit" className="ContactForm_Submit">
             SUBMIT
           </button>
