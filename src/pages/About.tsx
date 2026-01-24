@@ -1,10 +1,15 @@
 import '../styles/About.css';
+import { useEffect } from 'react';
 import About_1 from '../assets/About Us 1.jpg';
 import useParallaxHeader from '../hooks/useParralaxHeader';
 
 function About() {
   useParallaxHeader({
     heroSelector: ".About_Image",
+  })
+
+  useEffect(() => {
+    document.title = "About Us | The Kahi Company"
   })
 
   return (

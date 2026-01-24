@@ -1,4 +1,4 @@
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
 import '../styles/Home.css';
 import Home_1 from '../assets/Home 1.jpg';
 import Home_2 from '../assets/Home 2.jpg';
@@ -8,28 +8,14 @@ import useParallaxHeader from '../hooks/useParralaxHeader';
 
 
 
-function Home() {
-
-    // useEffect(() => {
-    //     const heroImg = document.querySelector('.Home_Image img') as HTMLElement;
-    //     const navbar = document.querySelector('.Navbar') as HTMLElement;
-    
-    //     if (!heroImg || !navbar ) return;
-    
-    //     const handleScroll = () => {
-    //         const scrollY = window.scrollY;
-    
-    //         heroImg.style.transform = `translateY(${scrollY * 0.35}px)`;
-    //         navbar.style.transform = `translateY(${-scrollY * 0.6}px)`;
-    //     };
-    
-    //     window.addEventListener('scroll', handleScroll);
-    //     return () => window.removeEventListener('scroll', handleScroll);
-    // }, []);
-    
+function Home() {    
     useParallaxHeader({
         heroSelector: ".Home_Image",
     });
+
+    useEffect(() => {
+        document.title = "The Kahi Company"
+    })
 
   return (
     <div className="Home">

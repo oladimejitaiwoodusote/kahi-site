@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import "../styles/Contact.css";
 import Contact_1 from "../assets/Contact Us.jpg";
 import useParallaxHeader from "../hooks/useParralaxHeader";
@@ -8,6 +9,10 @@ function Contact() {
   useParallaxHeader({
     heroSelector: ".Contact_Image",
   });
+
+  useEffect(()=> {
+    document.title = "Contact Us | The Kahi Company"
+  })
 
   // ============================
   // UNIQUE ID + DATE

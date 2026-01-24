@@ -1,13 +1,17 @@
 import '../styles/Footer.css'
+import { Link } from 'react-router-dom';
 import { FaInstagram, FaFacebook, FaLinkedinIn } from 'react-icons/fa';
 
 function Footer() {
   return (
     <footer className='Footer'>
         <div className='Footer_Top'>
-        <a href="/contact" className="Footer_Contact">
+        {/* <a href="/contact" className="Footer_Contact">
             CONTACT US
-        </a>
+        </a> */}
+        <Link to="/contact" className='Footer_Contact'>
+          Contact US
+        </Link>
         </div>
         <div className='Footer_Middle'>
         <a

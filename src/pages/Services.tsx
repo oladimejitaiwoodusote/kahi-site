@@ -1,4 +1,5 @@
 import '../styles/Services.css';
+import { useEffect } from 'react';
 import FeatureRow from '../components/FeatureRow';
 import Services_1 from '../assets/Services 1.jpg';
 import Services_2 from '../assets/Services 2.jpg';
@@ -15,6 +16,10 @@ import useParallaxHeader from '../hooks/useParralaxHeader';
 function Services() {
     useParallaxHeader({
         heroSelector: ".Services_Image",
+    })
+
+    useEffect(() => {
+        document.title = "Services | The Kahi Company"
     })
 
   return (
