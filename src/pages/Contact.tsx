@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import "../styles/Contact.css";
-import Contact_1 from "../assets/Contact Us.jpg";
+import Contact_2 from "../assets/Contact Us 2.jpeg";
 import useParallaxHeader from "../hooks/useParralaxHeader";
 import emailjs from "@emailjs/browser";
 
@@ -165,7 +165,7 @@ function Contact() {
   return (
     <div className="Contact">
       <div className="Contact_Image">
-        <img src={Contact_1} alt="Contact Us" />
+        <img src={Contact_2} alt="Contact Us" />
         <h1>Contact Us</h1>
       </div>
 
