@@ -1,6 +1,6 @@
 import '../styles/About.css';
 import { useEffect } from 'react';
-import About_2 from '../assets/About Us 2.jpeg';
+import About_1 from '../assets/About Us 1.jpeg';
 import useParallaxHeader from '../hooks/useParralaxHeader';
 
 function About() {
@@ -15,7 +15,7 @@ function About() {
   return (
     <div className="About">
         <div className="About_Image">
-            <img src={About_2} alt="About_1"/>
+            <img src={About_1} alt="About_1"/>
             <h1>MORE ABOUT US</h1>
         </div>
         <div className='About_Blurb'>

@@ -20,6 +20,7 @@ function Navbar() {
         <Link to="/" onClick={() => setMenuOpen(false)}>HOME</Link>
         <Link to="/about" onClick={() => setMenuOpen(false)}>ABOUT US</Link>
         <Link to="/services" onClick={() => setMenuOpen(false)}>SERVICES</Link>
+        <Link to="/gallery" onClick={() => setMenuOpen(false)}>GALLERY</Link>
         <Link to="/contact" onClick={() => setMenuOpen(false)}>CONTACT US</Link>
 
         {/* Socials inside mobile menu */}

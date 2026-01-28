@@ -4,12 +4,12 @@ import FeatureRow from '../components/FeatureRow';
 import Services_1 from '../assets/Services 1.jpg';
 import Services_2 from '../assets/Services 2.jpg';
 import Services_3 from '../assets/Services 3.jpg';
+import Services_4 from '../assets/Services 4.jpeg';
 import Services_5 from '../assets/Services 5.jpg';
 import Services_6 from '../assets/Services 6.jpg';
 import Services_7 from '../assets/Services 7.jpg';
 import Services_8 from '../assets/Services 8.jpg';
 import Services_9 from '../assets/Services 9.jpg';
-import Services_10 from '../assets/Services 10.jpeg';
 import useParallaxHeader from '../hooks/useParralaxHeader';
 
 
@@ -49,10 +49,10 @@ function Services() {
                 text="Curating and coordinating trusted vendors from décor and catering to
                 photography and entertainment ensuring consistent quality and smooth
                 collaboration for all vendors."
-                image={Services_10}                
+                image={Services_4}                
             />
             <FeatureRow
-                title="ON-SITE COORDINATION"
+                title="EVENT COORDINATION"
                 text="End-to-end event day management, guest flow, timeline execution, vendor
                 supervision, and real-time problem solving for a flawless experience."
                 image={Services_5} 

@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import '../styles/Home.css';
-import Home_4 from '../assets/Home 4.jpeg';
-import Home_5 from '../assets/Home 5.jpeg';
-import Home_6 from '../assets/Home 6.jpeg';
+import Home_1 from '../assets/Home 1.jpeg';
+import Home_2 from '../assets/Home 2.jpeg';
+import Home_3 from '../assets/Home 3.jpeg';
 
 import FeatureRow from '../components/FeatureRow';
 import useParallaxHeader from '../hooks/useParralaxHeader';
@@ -21,7 +21,7 @@ function Home() {
   return (
     <div className="Home">
         <div className="Home_Image">
-            <img src={Home_4} alt="Home_1"/>
+            <img src={Home_1} alt="Home_1"/>
         </div>
         <div className='Home_Blurb'>
             <h2>We are The Kahi Company.</h2>
@@ -34,18 +34,18 @@ function Home() {
         </div>
         <div className='Home_Cards'>
             <FeatureRow
-                title="QUITELY REFINED"
+                title="QUIETLY REFINED"
                 text="We craft bespoke experiences rooted in intention and collaboration. 
                     Each element is thoughtfully considered to create a cohesive, elegant whole. 
                     Because meaningful design lives in the details."
-                image={Home_5}
+                image={Home_2}
             />
             <FeatureRow
                 title="DESIGNED AROUND YOU"
                 text="More than a beautiful event, it should feel deeply personal.
                     From custom details to subtle gestures that make guests feel included, 
                     we focus on the elements that help tell your story."
-                image={Home_6}
+                image={Home_3}
                 reverse
             />
         </div>

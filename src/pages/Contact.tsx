@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Contact.css";
 import Contact_2 from "../assets/Contact Us 2.jpeg";
 import useParallaxHeader from "../hooks/useParralaxHeader";
@@ -10,9 +9,9 @@ function Contact() {
     heroSelector: ".Contact_Image",
   });
 
-  useEffect(()=> {
-    document.title = "Contact Us | The Kahi Company"
-  })
+  useEffect(() => {
+    document.title = "Contact Us | The Kahi Company";
+  }, []);
 
   // ============================
   // UNIQUE ID + DATE
@@ -42,10 +41,11 @@ function Contact() {
     useState(generateMeta());
 
   // ============================
+  // FORM STATE
+  // ============================
 
   const initialFormState = {
     fullname: "",
-    business: "",
     email: "",
     phone: "",
     contactMethod: "",
@@ -54,8 +54,6 @@ function Contact() {
     eventlocation: "",
     guests: "",
     description: "",
-    goals: ["", "", ""],
-    mood: "",
     services: "",
     special: "",
     gift: "",
@@ -76,14 +74,6 @@ function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleGoalChange = (index: number, value: string) => {
-    setFormData((prev) => {
-      const newGoals = [...prev.goals];
-      newGoals[index] = value;
-      return { ...prev, goals: newGoals };
-    });
-  };
-
   // ============================
   // SUBMIT
   // ============================
@@ -96,28 +86,23 @@ function Contact() {
 
     const payload = {
       fullname: formDataObj.get("fullname") as string,
-      business: formDataObj.get("business") as string,
       email: formDataObj.get("email") as string,
       phone: formDataObj.get("phone") as string,
       contact_method: formDataObj.get("contactMethod") as string,
+
       eventtype: formDataObj.get("eventtype") as string,
       eventdate: formDataObj.get("eventdate") as string,
       eventlocation: formDataObj.get("eventlocation") as string,
       guests: formDataObj.get("guests") as string,
+
       description: formDataObj.get("description") as string,
-      mood: formDataObj.get("mood") as string,
+
       services: formDataObj.get("services") as string,
       special: formDataObj.get("special") as string,
       gift: formDataObj.get("gift") as string,
       consent: formDataObj.get("consent") as string,
-      goals: [
-        formDataObj.get("goal0"),
-        formDataObj.get("goal1"),
-        formDataObj.get("goal2"),
-      ]
-        .filter(Boolean)
-        .join(", "),
-      // 🔥 META
+
+      // META
       time: submissionTime,
       id: submissionId,
     };
@@ -133,6 +118,7 @@ function Contact() {
     if (!payload.contact_method)
       newErrors.push("Contact method is required");
     if (!payload.eventtype) newErrors.push("Event type is required");
+    if (!payload.services) newErrors.push("Services selection is required");
     if (!payload.consent) newErrors.push("Consent is required");
 
     if (newErrors.length) {
@@ -152,7 +138,6 @@ function Contact() {
         form.reset();
         setErrors([]);
         setFormData(initialFormState);
-        // regenerate ID + date for next submission
         setSubmissionMeta(generateMeta());
       })
       .catch(() => alert("Oops, something went wrong."));
@@ -161,6 +146,7 @@ function Contact() {
   // ============================
   // RENDER
   // ============================
+
 
   return (
     <div className="Contact">
@@ -191,15 +177,6 @@ function Contact() {
               value={formData.fullname}
               onChange={handleChange}
             />
-
-            <label>Business / Organization</label>
-            <input
-              type="text"
-              name="business"
-              value={formData.business}
-              onChange={handleChange}
-            />
-
             <label>Email Address (required)</label>
             <input
               type="email"
@@ -297,27 +274,7 @@ function Contact() {
               value={formData.description}
               onChange={handleChange}
             />
-
-            <label>Top 3 Goals</label>
-            {formData.goals.map((goal, idx) => (
-              <input
-                key={idx}
-                name={`goal${idx}`}
-                type="text"
-                value={goal}
-                onChange={(e) => handleGoalChange(idx, e.target.value)}
-              />
-            ))}
-
-            <label>Mood / Vibe</label>
-            <input
-              type="text"
-              name="mood"
-              value={formData.mood}
-              onChange={handleChange}
-            />
           </div>
-
           {/* Services Needed */}
           <div className="ContactForm_Section">
             <h3>Services Needed (required)</h3>
