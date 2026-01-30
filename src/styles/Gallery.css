@@ -1,84 +1,66 @@
 .Gallery {
-    padding: 120px 8vw;
-  }
-  
-  /* HEADER */
-  
-  .Gallery_Header {
-    text-align: center;
-    margin-bottom: 80px;
-  }
-  
-  .Gallery_Header h1 {
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
-    letter-spacing: 1px;
-  }
-  
-  .Gallery_Header p {
-    margin-top: 12px;
-    color: #777;
-    font-size: 1rem;
-  }
-  
-  /* GRID */
-  
+  padding: 120px 8vw;
+  background-color: #E9E1D3;
+}
+
+/* HEADER */
+.Gallery_Header {
+  text-align: center;
+  margin-bottom: 60px;
+  color: #AE9300;
+}
+
+.Gallery_Header h1 {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  letter-spacing: 1px;
+}
+
+.Gallery_Header p {
+  margin-top: 12px;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* MASONRY GRID */
+.Gallery_Grid {
+  column-count: 3;       /* number of columns */
+  column-gap: 20px;      /* horizontal spacing between columns */
+}
+
+.Gallery_Item {
+  display: inline-block;  /* needed for masonry in CSS columns */
+  width: 100%;            /* fill the column width */
+  margin-bottom: 20px;    /* vertical spacing between images */
+  overflow: hidden;
+  border-radius: 0;       /* straight edges */
+}
+
+.Gallery_Item img {
+  width: 100%;
+  height: auto;           /* keeps natural height, no cropping */
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.Gallery_Item:hover img {
+  transform: scale(1.03);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1400px) {
   .Gallery_Grid {
-    display: grid;
-    grid-template-columns: repeat(3, 421px);
-    justify-content: center;
-    gap: 40px;
+    column-count: 3;
   }
-  
-  /* ITEMS */
-  
-  .Gallery_Item {
-    width: 421px;
-    overflow: hidden;
-    border-radius: 18px;
+}
+
+@media (max-width: 900px) {
+  .Gallery_Grid {
+    column-count: 2;
   }
-  
-  .Gallery_Item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
+}
+
+@media (max-width: 600px) {
+  .Gallery_Grid {
+    column-count: 1;
   }
-  
-  .Gallery_Item:hover img {
-    transform: scale(1.04);
-  }
-  
-  /* HEIGHTS */
-  
-  .Gallery_Item.tall {
-    height: 724px;
-  }
-  
-  .Gallery_Item.short {
-    height: 300px;
-  }
-  
-  /* RESPONSIVE */
-  
-  @media (max-width: 1400px) {
-    .Gallery_Grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  
-    .Gallery_Item {
-      width: 100%;
-    }
-  }
-  
-  @media (max-width: 900px) {
-    .Gallery_Grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-  
-  @media (max-width: 550px) {
-    .Gallery_Grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  
+}
