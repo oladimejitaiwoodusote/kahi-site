@@ -53,9 +53,7 @@ function Contact() {
     eventdate: "",
     eventlocation: "",
     guests: "",
-    description: "",
     services: "",
-    special: "",
     gift: "",
     consent: "",
   };
@@ -95,10 +93,7 @@ function Contact() {
       eventlocation: formDataObj.get("eventlocation") as string,
       guests: formDataObj.get("guests") as string,
 
-      description: formDataObj.get("description") as string,
-
       services: formDataObj.get("services") as string,
-      special: formDataObj.get("special") as string,
       gift: formDataObj.get("gift") as string,
       consent: formDataObj.get("consent") as string,
 
@@ -262,19 +257,6 @@ function Contact() {
               onChange={handleChange}
             />
           </div>
-
-          {/* Event Goals & Vision */}
-          <div className="ContactForm_Section">
-            <h3>Event Goals & Vision</h3>
-
-            <label>Event Description</label>
-            <input
-              type="text"
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-            />
-          </div>
           {/* Services Needed */}
           <div className="ContactForm_Section">
             <h3>Services Needed (required)</h3>
@@ -297,15 +279,6 @@ function Contact() {
           {/* Guest & Experience */}
           <div className="ContactForm_Section">
             <h3>Guest & Experience Details</h3>
-
-            <label>Special Requests / Guest Experience</label>
-            <input
-              type="text"
-              name="special"
-              value={formData.special}
-              onChange={handleChange}
-            />
-
             <p>Gift / Favor Arrangements (required)</p>
             <div className="ContactForm_Checkboxes">
               {["yes", "no"].map((opt) => (
